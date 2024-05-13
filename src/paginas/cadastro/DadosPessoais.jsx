@@ -1,4 +1,4 @@
-import { Formik } from "formik";
+import { Form, Formik } from "formik";
 import React from "react";
 import { Col, Row } from "react-grid-system";
 import { Link } from "react-router-dom";
@@ -50,7 +50,7 @@ const DadosPessoais = () => {
       }}
     >
       {(formik) => {
-        <form>
+        <Form onSubmit={formik.handleSubmit}>
           <div style={{ textAlign: "center" }}>
             <Tipografia variante="h1" componente="h1">
               Crie seu cadastro
@@ -152,7 +152,7 @@ const DadosPessoais = () => {
               </div>
             </Col>
           </Row>
-        </form>;
+        </Form>;
       }}
     </Formik>
   );
