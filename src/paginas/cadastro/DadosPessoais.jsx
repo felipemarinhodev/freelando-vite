@@ -48,8 +48,19 @@ const DadosPessoais = () => {
         senha: "",
         confirmarSenha: "",
       }}
+      validate={(values) => {
+        const errors = {};
+        if (!values.nome) {
+          errors.nome = "Campo obrigatório";
+        }
+        if (!values.confirmarSenha) {
+          errors.confirmarSenha = "Campo obrigatório";
+        } else if (values.senha !== values.confirmarSenha) {
+          errors.confirmarSenha = "As senhas não conferem";
+        }
+        return errors;
+      }}
     >
-      <span>lalala</span>
       {(formik) => {
         <Form onSubmit={formik.handleSubmit}>
           <div style={{ textAlign: "center" }}>
