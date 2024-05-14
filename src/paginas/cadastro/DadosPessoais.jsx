@@ -74,6 +74,9 @@ const DadosPessoais = () => {
 
         return errors;
       }}
+      onSubmit={(values) => {
+        console.log("dados do formulário", values);
+      }}
     >
       {(formik) => (
         <Form onSubmit={formik.handleSubmit}>
