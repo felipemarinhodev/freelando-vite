@@ -49,6 +49,7 @@ const DadosPessoais = () => {
         confirmarSenha: "",
       }}
     >
+      <span>lalala</span>
       {(formik) => {
         <Form onSubmit={formik.handleSubmit}>
           <div style={{ textAlign: "center" }}>
@@ -63,78 +64,38 @@ const DadosPessoais = () => {
           </div>
           <Row>
             <Col>
-              <CampoTexto
-                titulo="Nome completo"
-                valor={formik.values.nome}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                tipo="text"
-                required
-              />
+              <CampoTexto titulo="Nome completo" name="nome" type="text" />
             </Col>
           </Row>
           <Row>
             <Col lg={4} md={4} sm={4}>
-              <ListaSupensa
+              {/* <ListaSupensa
                 titulo="Estado"
                 opcoes={estadosBrasileiros}
-                valor={formik.values.estado}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-              />
+                value="estado"
+              /> */}
             </Col>
             <Col lg={8} md={8} sm={8}>
-              <CampoTexto
-                titulo="Cidade"
-                valor={formik.values.cidade}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                tipo="text"
-                required
-              />
+              <CampoTexto titulo="Cidade" name="cidade" type="text" />
             </Col>
           </Row>
           <Row>
             <Col lg={6} md={6} sm={6}>
-              <CampoTexto
-                titulo="E-mail"
-                valor={formik.values.email}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                tipo="email"
-                required
-              />
+              <CampoTexto titulo="E-mail" name="email" type="email" />
             </Col>
             <Col lg={6} md={6} sm={6}>
-              <CampoTexto
-                titulo="Telefone"
-                valor={formik.values.telefone}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                tipo="tel"
-                required
-              />
+              <CampoTexto titulo="Telefone" name="telefone" type="tel" />
             </Col>
           </Row>
           <Row>
             <Col lg={6} md={6} sm={6}>
-              <CampoTexto
-                titulo="Senha"
-                valor={formik.values.senha}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                tipo="password"
-                required
-              />
+              <CampoTexto titulo="Senha" name="senha" type="password" />
             </Col>
             <Col lg={6} md={6} sm={6}>
               <CampoTexto
                 titulo="Confirme sua senha"
-                valor={formik.values.confirmarSenha}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                tipo="password"
-                required
+                name="confirmarSenha"
+                type="password"
               />
             </Col>
           </Row>
