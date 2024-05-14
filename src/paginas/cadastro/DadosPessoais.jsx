@@ -59,8 +59,18 @@ const DadosPessoais = () => {
           errors.confirmarSenha = "As senhas não conferem";
         }
         if (!values.cidade) errors.cidade = "Campo obrigatório";
-        if (!values.email) errors.email = "Campo obrigatório";
-        if (!values.telefone) errors.telefone = "Campo obrigatório";
+        if (!values.email) {
+          errors.email = "Campo obrigatório";
+        } else if (
+          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+        ) {
+          errors.email = "O E-mail informado é invalálido";
+        }
+        if (!values.telefone) {
+          errors.telefone = "Campo obrigatório";
+        } else if (!/^\d{11}$/i.test(values.telefone)) {
+          errors.telefone = "Número de telefone inválido";
+        }
 
         return errors;
       }}
