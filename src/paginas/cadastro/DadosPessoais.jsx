@@ -58,6 +58,10 @@ const DadosPessoais = () => {
         } else if (values.senha !== values.confirmarSenha) {
           errors.confirmarSenha = "As senhas não conferem";
         }
+        if (!values.cidade) errors.cidade = "Campo obrigatório";
+        if (!values.email) errors.email = "Campo obrigatório";
+        if (!values.telefone) errors.telefone = "Campo obrigatório";
+
         return errors;
       }}
     >
