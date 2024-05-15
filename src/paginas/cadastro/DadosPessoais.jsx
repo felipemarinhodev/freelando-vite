@@ -38,7 +38,15 @@ const estadosBrasileiros = [
   { text: "Tocantins", value: "TO" },
 ];
 
-const schema = Yup.object().shape({});
+const schema = Yup.object().shape({
+  nome: Yup.string()
+    .required("Campo obrigátorio")
+    .min(2, "Digite seu nome completo"),
+  cidade: Yup.string()
+    .required("Campo obrigátorio")
+    .max(58, "Digite uma cidade válida"),
+  estado: Yup.string().required("Campo obrigátorio"),
+});
 
 const DadosPessoais = () => {
   return (
