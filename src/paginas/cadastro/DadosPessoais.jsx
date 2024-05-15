@@ -1,5 +1,6 @@
 import { Form, Formik } from "formik";
 import React from "react";
+import * as Yup from "yup";
 import { Col, Row } from "react-grid-system";
 import { Link } from "react-router-dom";
 import { Botao } from "../../componentes/Botao/Botao";
@@ -36,6 +37,9 @@ const estadosBrasileiros = [
   { text: "Sergipe", value: "SE" },
   { text: "Tocantins", value: "TO" },
 ];
+
+const schema = Yup.object().shape({});
+
 const DadosPessoais = () => {
   return (
     <Formik
