@@ -1,10 +1,9 @@
-import { Tipografia } from "../../componentes/Tipografia/Tipografia"
-import GrupoRadio from "../../componentes/Radio/GrupoRadio"
-import { Col, Row } from "react-grid-system"
-import { Botao } from "../../componentes/Botao/Botao"
-import { Link } from "react-router-dom"
-import { useState } from "react"
-import { Formik } from "formik";
+import { Form, Formik } from "formik";
+import { Col, Row } from "react-grid-system";
+import { Link } from "react-router-dom";
+import { Botao } from "../../componentes/Botao/Botao";
+import GrupoRadio from "../../componentes/Radio/GrupoRadio";
+import { Tipografia } from "../../componentes/Tipografia/Tipografia";
 
 const opcoes = [
   {
@@ -50,11 +49,7 @@ const Interesses = () => {
         }}
       >
         <Form>
-          <GrupoRadio
-            opcoes={opcoes}
-            name="interesse"
-            onChange={setInteresse}
-          />
+          <GrupoRadio opcoes={opcoes} />
         </Form>
       </Formik>
       <Row>
