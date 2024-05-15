@@ -46,6 +46,16 @@ const schema = Yup.object().shape({
     .required("Campo obrigátorio")
     .max(58, "Digite uma cidade válida"),
   estado: Yup.string().required("Campo obrigátorio"),
+  email: Yup.string()
+    .required("Campo obrigátorio")
+    .email("Digite um e-mail válido."),
+  telefone: Yup.string()
+    .required("Campo obrigátorio")
+    .matches(/^\d{11}$/, "Número de telefone inválido."),
+  senha: Yup.string().required("Campo obrigátorio"),
+  confirmarSenha: Yup.string()
+    .required("Campo obrigátorio")
+    .oneOf([Yup.ref("senha"), null], "As senhas não conferem"),
 });
 
 const DadosPessoais = () => {
