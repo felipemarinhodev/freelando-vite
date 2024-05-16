@@ -38,6 +38,15 @@ const estadosBrasileiros = [
   { text: "Tocantins", value: "TO" },
 ];
 
+const formatarTelefone = (valor) => {
+  if (!value) return;
+
+  const telefone = valor.replace(/\D/g, "");
+  return `(${telefone.slice(0, 2)}) ${telefone.slice(2, 7)}-${telefone.slice(
+    7
+  )}`;
+};
+
 const schema = Yup.object().shape({
   nome: Yup.string()
     .trim()
@@ -54,7 +63,8 @@ const schema = Yup.object().shape({
     .email("Digite um e-mail válido."),
   telefone: Yup.string()
     .required("Campo obrigátorio")
-    .matches(/^\d{11}$/, "Número de telefone inválido."),
+    .matches(/^\d{11}$/, "Número de telefone inválido.")
+    .transform(formatarTelefone),
   senha: Yup.string().required("Campo obrigátorio"),
   confirmarSenha: Yup.string()
     .required("Campo obrigátorio")
