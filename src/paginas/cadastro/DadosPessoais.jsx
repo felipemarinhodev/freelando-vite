@@ -40,9 +40,12 @@ const estadosBrasileiros = [
 
 const schema = Yup.object().shape({
   nome: Yup.string()
+    .trim()
+    .lowercase()
     .required("Campo obrigátorio")
     .min(2, "Digite seu nome completo"),
   cidade: Yup.string()
+    .titlecase()
     .required("Campo obrigátorio")
     .max(58, "Digite uma cidade válida"),
   estado: Yup.string().required("Campo obrigátorio"),
@@ -57,6 +60,9 @@ const schema = Yup.object().shape({
     .required("Campo obrigátorio")
     .oneOf([Yup.ref("senha"), null], "As senhas não conferem"),
   termos: Yup.boolean().oneOf([true], "Você deve aceitar os termos"),
+  nascimento: Yup.date()
+    .required("Campo obrigátorio")
+    .max(new Date(), "Informe uma data válida"),
 });
 
 const DadosPessoais = () => {
@@ -91,6 +97,13 @@ const DadosPessoais = () => {
           <Row>
             <Col>
               <CampoTexto titulo="Nome completo" name="nome" type="text" />
+            </Col>
+            <Col>
+              <CampoTexto
+                titulo="Data de nascimento"
+                name="nascimento"
+                type="date"
+              />
             </Col>
           </Row>
           <Row>
