@@ -1,4 +1,4 @@
-import { Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import React from "react";
 import * as Yup from "yup";
 import { Col, Row } from "react-grid-system";
@@ -56,6 +56,7 @@ const schema = Yup.object().shape({
   confirmarSenha: Yup.string()
     .required("Campo obrigátorio")
     .oneOf([Yup.ref("senha"), null], "As senhas não conferem"),
+  termos: Yup.boolean().oneOf([true], "Você deve aceitar os termos"),
 });
 
 const DadosPessoais = () => {
@@ -70,32 +71,7 @@ const DadosPessoais = () => {
         senha: "",
         confirmarSenha: "",
       }}
-      validate={(values) => {
-        const errors = {};
-        if (!values.nome) {
-          errors.nome = "Campo obrigatório";
-        }
-        if (!values.confirmarSenha) {
-          errors.confirmarSenha = "Campo obrigatório";
-        } else if (values.senha !== values.confirmarSenha) {
-          errors.confirmarSenha = "As senhas não conferem";
-        }
-        if (!values.cidade) errors.cidade = "Campo obrigatório";
-        if (!values.email) {
-          errors.email = "Campo obrigatório";
-        } else if (
-          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-        ) {
-          errors.email = "O E-mail informado é invalálido";
-        }
-        if (!values.telefone) {
-          errors.telefone = "Campo obrigatório";
-        } else if (!/^\d{11}$/i.test(values.telefone)) {
-          errors.telefone = "Número de telefone inválido";
-        }
-
-        return errors;
-      }}
+      validationSchema={schema}
       onSubmit={(values) => {
         console.log("dados do formulário", values);
       }}
@@ -145,6 +121,17 @@ const DadosPessoais = () => {
               />
             </Col>
           </Row>
+          <Row>
+            <label>
+              <Field type="checkbox" name="termos" />
+              Aceito os termos e condições
+            </label>
+          </Row>
+          {formik.errors.termos ? (
+            <div style={{ color: "red", marginTop: "4px" }}>
+              {formik.errors.termos}
+            </div>
+          ) : null}
           <Row>
             <Col lg={6} md={6} sm={6}>
               <Link to="/cadastro/interesses">
